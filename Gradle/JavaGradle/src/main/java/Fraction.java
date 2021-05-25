@@ -16,6 +16,11 @@ public class Fraction {
    public Fraction(){
       numerator = denominator = 0;
    }
+   
+   public Fraction(int n, int d) {
+      numerator = n;
+      denominator = d;
+   }
 
    public void print() {
     System.out.print(numerator + "/" + denominator );
@@ -42,6 +47,7 @@ public class Fraction {
          // create a new instance
          // Fraction *frac = [[Fraction alloc] init];
          Fraction frac = new Fraction();
+         Fraction frac2 = new Fraction(args[0], args[1]);
 
          // set the values
          frac.setNumerator(1);
@@ -50,6 +56,8 @@ public class Fraction {
          // print it
          System.out.print("The fraction is: ");
          frac.print();
+         System.out.println("");
+         frac2.print();
          System.out.println("");
 
       }catch(Exception e) {
