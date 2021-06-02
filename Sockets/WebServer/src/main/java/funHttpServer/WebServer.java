@@ -216,6 +216,23 @@ class WebServer {
 
           // TODO: Include error handling here with a correct error code and
           // a response that makes sense
+          Integer temp = new Integer(0);
+          if (num1.getClass() == temp.getClass() && num2.getClass() == temp.getClass()) {
+            //do nothing since it's all fine
+          } else if (num1.getClass() != temp.getClass()) {
+            builder.append("HTTP/1.1 412 Precondition Failed\n");
+            builder.append("Content-Type: integer expected\n");
+            builder.append("\n");
+          } else if (num2.getClass() != temp.getClass()) {
+            builder.append("HTTP/1.1 412 Precondition Failed\n");
+            builder.append("Content-Type: integer expected \n");
+            builder.append("\n");
+          } else {
+            //num2.getClass() != temp.getClass()
+            builder.append("HTTP/1.1 412 Precondition Failed\n");
+            builder.append("Content-Type: integer expected\n");
+            builder.append("\n");
+          }
 
         } else if (request.contains("github?")) {
           // pulls the query from the request and runs it with GitHub's REST API
@@ -238,6 +255,36 @@ class WebServer {
           // amehlhase, 46384989 -> memoranda
           // amehlhase, 46384989 -> ser316examples
           // amehlhase, 46384989 -> test316
+          if(json.contains("memoranda")) {
+            builder.append("HTTP/1.1 200 OK\n");
+            builder.append("Content-Type: text/html; charset=utf-8\n");
+            builder.append("Repo Name: memoranda");
+            builder.append("Repo id: ");
+            builder.append("Owner: amehlhase316");
+            builder.append("\n");
+          } else if(json.contains("ser316examples")) {
+            builder.append("HTTP/1.1 200 OK\n");
+            builder.append("Content-Type: text/html; charset=utf-8\n");
+            builder.append("Repo Name: ser316examples");
+            builder.append("Repo id: ");
+            builder.append("Owner: amehlhase316");
+            builder.append("\n");
+          } else if(json.contains("testing316")) {
+            builder.append("HTTP/1.1 200 OK\n");
+            builder.append("Content-Type: text/html; charset=utf-8\n");
+            builder.append("Repo Name: testing316");
+            builder.append("Repo id: ");
+            builder.append("Owner: amehlhase316");
+            builder.append("\n");
+          } else if (json.contains("testing123")) {
+            builder.append("HTTP/1.1 200 OK\n");
+            builder.append("Content-Type: text/html; charset=utf-8\n");
+            builder.append("Repo Name: testing123");
+            builder.append("Repo id: ");
+            builder.append("Owner: amehlhase316");
+            builder.append("\n");
+          }
+
 
         } else {
           // if the request is not recognized at all
